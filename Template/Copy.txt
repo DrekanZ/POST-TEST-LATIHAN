@@ -1,0 +1,22 @@
+implementation 'com.android.volley:volley:1.2.1'
+
+private void post(String input1, String input2) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, DatabaseLink.URL_REGISTER, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("input1",input1);
+                params.put("input2",input2);
+                return params;
+            }
+        };
+Volley.newRequestQueue(this).add(stringRequest);
+    }
